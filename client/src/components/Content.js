@@ -1,17 +1,43 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const Content = () => {
   const [input, setInput] = useState("");
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
-    console.log(input);
   };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const response = await axios.get("/completions", {
+  //       input: input,
+  //     });
+  //     const data = response.data;
+  //     // Process the response data as needed
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.log("Error: " + error);
+  //   }
+  //   setInput("");
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setInput("");
-    console.log(input);
+    axios
+      .get("/completions", {
+        params: {
+          prompt: input,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
