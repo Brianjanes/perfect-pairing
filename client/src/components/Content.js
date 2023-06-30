@@ -24,7 +24,6 @@ const Content = () => {
         },
       })
       .then((response) => {
-        console.log(response.data.message);
         setResult(response.data.message);
         setIsLoading(false);
       })

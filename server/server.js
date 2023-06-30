@@ -1,10 +1,12 @@
 const express = require("express");
-const fs = require("fs");
+//this was using fs to parse the scraped NLC data.
+// const fs = require("fs");
 require("dotenv").config({ path: "../.env" });
 const cors = require("cors");
 const { Configuration, OpenAIApi } = require("openai");
 
-JSON.truncate = require("json-truncate");
+//attemting to truncate the data to shorten it.
+// JSON.truncate = require("json-truncate");
 
 const PORT = process.env.PORT || 8000;
 
@@ -18,18 +20,11 @@ app.use(express.json());
 
 app.use(cors());
 
-const wineData = JSON.parse(fs.readFileSync("wineData.json"));
-
-//trying to load in the NLC data
-
+//trying to load in the NLC data, too much to parse through.
+// const wineData = JSON.parse(fs.readFileSync("wineData.json"));
 // const truncatedData = JSON.truncate(wineData);
 
 // const url = "https://nlliquor.com/product-category/wine/";
-
-// const reqFormatter = (inputStr) => {
-//   const convertedInputStr = inputStr.replace(/\n/g, "").replace(/\a/g, "");
-//   return convertedInputStr;
-// };
 
 app.get("/completions", async (request, response) => {
   try {

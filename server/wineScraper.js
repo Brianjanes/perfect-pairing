@@ -1,3 +1,6 @@
+//this file is for scraping the name & price of ALL wines from the NLC website.
+//could potentially filter to 750ml bottles and add more logic to try and sort through red and white to limit amoutn of JSON data.
+
 const puppeteer = require("puppeteer");
 const fs = require("fs");
 
