@@ -46,7 +46,7 @@ const Content = () => {
       .post("https://api.openai.com/v1/completions", data, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
         },
       })
       .then((response) => {
