@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
 import ResultsModal from "./ResultsModal";
+import { Configuration, OpenAIApi } from "openai";
 
 const Content = () => {
   const [input, setInput] = useState("");
   const [result, setResult] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  // const configuration = new Configuration({
+  //   apiKey: process.env.OPENAI_API_KEY,
+  // });
+  // const openai = new OpenAIApi(configuration);
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
@@ -17,20 +23,77 @@ const Content = () => {
     setShowModal(true);
     setIsLoading(true);
 
+    const data = {
+      model: "text-davinci-003",
+      prompt: `You are a world-class sommelier. The goal is to find a great match for ${input}. Please provide some one option at 3 price points, starting around $20 CAD (wine 1), then $50 CAD (wine 2), and then $100 CAD (wine 3). respond in the following format precisely, without any additional characters or line breaks: [{
+        "name": "Wine Name 1",
+        "description": "Description of Wine 1",
+        "price": 0
+      }, {
+        "name": "Wine Name 2",
+        "description": "Description of Wine 2",
+        "price": 0
+      }, {
+        "name": "Wine Name 3",
+        "description": "Description of Wine 3",
+        "price": 0
+      }]`,
+      max_tokens: 400,
+      temperature: 0.7,
+    };
+
     axios
-      .get("/completions", {
-        params: {
-          prompt: input,
+      .post("https://api.openai.com/v1/completions", data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer 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`,
         },
       })
       .then((response) => {
-        setResult(response.data.message);
+        console.log(response.data.choices[0].text);
+        setResult(JSON.parse(response.data.choices[0].text));
         setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  //from server
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setShowModal(true);
+  //   setIsLoading(true);
+
+  //   axios
+  //     .post("https://api.openai.com/v1/engines/davinci-codex/completions", {
+  //       params: {
+  //         prompt: `You are a world-class sommelier. The goal is to find a great match for ${input}. Please provide some one option at 3 price points, starting around $20 CAD(wine 1), then $50 CAD (wine 2), and then $100 CAD (wine 3). respond in the following format precisely, without any additional characters or line breaks: [{
+  //           "name": "Wine Name 1",
+  //           "description": "Description of Wine 1",
+  //           "price": 0
+  //         }, {
+  //           "name": "Wine Name 2",
+  //           "description": "Description of Wine 2",
+  //           "price": 0
+  //         }, {
+  //           "name": "Wine Name 3",
+  //           "description": "Description of Wine 3",
+  //           "price": 0
+  //         }]`,
+  //         max_tokens: 400,
+  //         temperature: 0.7,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //       setResult(response.data.message);
+  //       setIsLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   return (
     <div className="content-main">
