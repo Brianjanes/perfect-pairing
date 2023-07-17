@@ -143,3 +143,13 @@
     transform: rotate(360deg);
   }
 }
+
+.newPairing-button {
+  width: 150px;
+  height: 50px;
+  justify-content: center;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  background-color: #40071a;
+}

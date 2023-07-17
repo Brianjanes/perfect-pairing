@@ -2,7 +2,7 @@ import React from "react";
 import "../components/Modal.css";
 import LoadingSpinner from "./LoadingSpinner";
 
-const ResultsModal = ({ result, isLoading }) => {
+const ResultsModal = ({ result, isLoading, setShowModal }) => {
   return (
     <div className="modal-background">
       <div className="results-modal">
@@ -15,18 +15,28 @@ const ResultsModal = ({ result, isLoading }) => {
             <LoadingSpinner />
           </div>
         ) : (
-          <div className="modal-body">
-            {result?.map((wine, index) => {
-              return (
-                <div className="wine-box" key={index}>
-                  <div className="name-price">
-                    {wine.name} - ${wine.price}
+          <>
+            <div className="modal-body">
+              {result?.map((wine, index) => {
+                return (
+                  <div className="wine-box" key={index}>
+                    <div className="name-price">
+                      {wine.name} - ${wine.price}
+                    </div>
+                    <div className="wine-description">{wine.description}</div>
                   </div>
-                  <div className="wine-description">{wine.description}</div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+            <div>
+              <button
+                className="newPairing-button"
+                onClick={() => setShowModal(false)}
+              >
+                New Pairing
+              </button>
+            </div>
+          </>
         )}
       </div>
     </div>

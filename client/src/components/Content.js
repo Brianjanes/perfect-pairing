@@ -46,9 +46,9 @@ const Content = () => {
         },
       })
       .then((response) => {
-        console.log(response.data.choices[0].text);
         setResult(JSON.parse(response.data.choices[0].text));
         setIsLoading(false);
+        setInput("");
       })
       .catch((error) => {
         console.log(error);
