@@ -1,18 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import ResultsModal from "./ResultsModal";
-import { Configuration, OpenAIApi } from "openai";
 
 const Content = () => {
   const [input, setInput] = useState("");
   const [result, setResult] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
-  // const configuration = new Configuration({
-  //   apiKey: process.env.OPENAI_API_KEY,
-  // });
-  // const openai = new OpenAIApi(configuration);
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
@@ -22,7 +16,7 @@ const Content = () => {
     e.preventDefault();
     setShowModal(true);
     setIsLoading(true);
-
+    console.log(process.env);
     const data = {
       model: "text-davinci-003",
       prompt: `You are a world-class sommelier. The goal is to find a great match for ${input}. Please provide some one option at 3 price points, starting around $20 CAD (wine 1), then $50 CAD (wine 2), and then $100 CAD (wine 3). respond in the following format precisely, without any additional characters or line breaks: [{
@@ -46,7 +40,7 @@ const Content = () => {
       .post("https://api.openai.com/v1/completions", data, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
         },
       })
       .then((response) => {
