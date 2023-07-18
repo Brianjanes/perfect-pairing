@@ -149,9 +149,9 @@ h6 {
 }
 
 /*media queries*/
-@media screen and (min-width: 741px) {
+/* @media screen and (min-width: 600px) {
   .app {
     overflow-y: scroll;
     height: auto;
   }
-}
+} */
