@@ -32,7 +32,7 @@ app.get("/completions", async (request, response) => {
 
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `You are a world-class sommelier. The goal is to find a great match for ${prompt}. Please provide some one option at 3 price points, starting around $20 CAD(wine 1), then $50 CAD (wine 2), and then $100 CAD (wine 3). respond in the following format precisely, without any additional characters or line breaks: [{
+      prompt: `You are a world-class sommelier. The goal is to find a great match for ${prompt}. Please provide some one option at 3 price points, starting at $20 CAD(wine 1), then $50 CAD (wine 2), and then $100 CAD (wine 3). respond in the following format precisely, without any additional characters or line breaks: [{
         "name": "Wine Name 1",
         "description": "Description of Wine 1",
         "price": 0

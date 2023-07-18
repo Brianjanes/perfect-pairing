@@ -4,7 +4,7 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs");
 
-const baseUrl = `https://nlliquor.com/product-category/wine/`;
+const baseUrl = `https://nlliquor.com/product-category/wine/?ml-size=750-ml`;
 const outputFilePath = "wineData.json";
 
 const scraper = async () => {
