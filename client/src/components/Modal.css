@@ -11,7 +11,9 @@
 }
 .results-modal {
   width: min(80% - 2rem);
-  height: 600px;
+  height: 60%;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
   border-radius: 8px;
   background-color: whitesmoke;
   border: 5px solid #40071a;
@@ -38,7 +40,6 @@
   background-color: whitesmoke;
 }
 .wine-box {
-  border-radius: 4px;
   width: 80%;
 }
 .wine-description {
@@ -144,12 +145,31 @@
   }
 }
 
+.flex-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .newPairing-button {
   width: 150px;
   height: 50px;
-  justify-content: center;
   border-radius: 4px;
   color: white;
   border: none;
   background-color: #40071a;
+  margin-top: 1rem;
+}
+
+@media (min-width: 600px) {
+  .results-modal {
+    height: 80%;
+  }
+  .modal-body {
+    overflow-y: scroll;
+    font-size: 0.8rem;
+  }
+  .wine-box {
+    font-size: 0.8rem;
+  }
 }

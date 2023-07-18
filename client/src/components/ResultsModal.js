@@ -28,7 +28,7 @@ const ResultsModal = ({ result, isLoading, setShowModal }) => {
                 );
               })}
             </div>
-            <div>
+            <div className="flex-button">
               <button
                 className="newPairing-button"
                 onClick={() => setShowModal(false)}
