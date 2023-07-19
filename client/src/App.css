@@ -91,14 +91,14 @@ h6 {
 }
 
 .form {
-  width: 40%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 1;
 }
 .query-input {
-  width: 100%;
+  width: 90%;
   height: 8rem;
   margin: 20px;
   font-size: 1rem;
@@ -108,7 +108,7 @@ h6 {
   padding: 10px 15px;
 }
 .button {
-  border: none;
+  border: 1px solid whitesmoke;
   width: auto;
   align-items: center;
   padding: 15px;
@@ -131,7 +131,10 @@ h6 {
 }
 
 .header-title {
-  font-size: 2rem;
+  font-family: "Cedarville Cursive", cursive;
+  color: #3e0619;
+  font-style: italic;
+  font-size: 2.2rem;
 }
 
 /* Footer CSS */
@@ -145,13 +148,20 @@ h6 {
   z-index: 101;
 }
 .footer-title {
-  font-size: 1rem;
+  font-size: 0.8rem;
+  color: black;
 }
 
-/*media queries*/
-/* @media screen and (min-width: 600px) {
-  .app {
-    overflow-y: scroll;
-    height: auto;
+/* media queries */
+@media screen and (width <= 600px) {
+  .content-main {
+    background-color: #40071a;
+    width: 95vw;
   }
-} */
+  .form {
+    width: 80%;
+  }
+  h2 {
+    color: whitesmoke;
+  }
+}
