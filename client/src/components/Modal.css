@@ -33,7 +33,7 @@
 }
 .modal-body {
   flex: 50%;
-  max-width: 60%;
+  max-width: 100%;
   overflow-x: scroll;
   display: flex;
   flex-direction: column;
@@ -57,13 +57,39 @@
   border-bottom: 2px solid #40071a;
 }
 
-.loading-div {
+.flex-button {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.newPairing-button {
+  width: 150px;
+  height: 50px;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  background-color: #40071a;
+  margin-top: 1rem;
+}
+.newPairing-button:hover {
+  background-color: #59122a;
+  cursor: pointer;
+}
+
+@media (width <= 600px) {
+  .results-modal {
+    width: 95vw;
+    height: 80%;
+  }
+  .modal-body {
+    width: 100%;
+    padding-top: 1rem;
+    justify-content: flex-start;
+  }
+}
+
+/*loading spinner css*/
 .lds-roller {
   display: inline-block;
   position: relative;
@@ -149,28 +175,9 @@
   }
 }
 
-.flex-button {
+.loading-div {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.newPairing-button {
-  width: 150px;
-  height: 50px;
-  border-radius: 4px;
-  color: white;
-  border: none;
-  background-color: #40071a;
-  margin-top: 1rem;
-}
-
-@media (width <= 600px) {
-  .results-modal {
-    height: 80%;
-  }
-  .modal-body {
-    padding-top: 2rem;
-    justify-content: flex-start;
-  }
 }

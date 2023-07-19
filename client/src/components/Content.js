@@ -21,7 +21,7 @@ const Content = () => {
 
     const data = {
       model: "text-davinci-003",
-      prompt: `You are a world-class sommelier. Your goal is to find a great match for ${input}. Use current wine pricing information from Canada, and do not fabricate any information about these wines. Please provide some one option at 3 price points, starting at no more thabn $20 Canadian Dollars (wine 1), then no more than $50 Canadian Dollars (wine 2), and then no more than $100 Canadian dollars (wine 3). respond in the following format precisely, without any additional characters or line breaks: [{
+      prompt: `You are a world-class sommelier. Your goal is to find a great match for ${input}. Use current wine pricing information from the NLC website https://nlliquor.com/product-category/wine/?ml-size=750-ml, and do not lie about any information regarding these wines. Please provide 3 options at different price points, starting at no more than 20 Canadian Dollars (wine 1), then no more than 50 Canadian Dollars (wine 2), and then no more than 100 Canadian dollars (wine 3). respond in the following format precisely, without any additional characters or line breaks: [{
         "name": "Wine Name 1",
         "description": " Brief description of Wine 1",
         "price": 20
