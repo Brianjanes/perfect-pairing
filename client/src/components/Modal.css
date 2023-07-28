@@ -58,9 +58,11 @@
 }
 
 .flex-button {
+  width: 70%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
 .newPairing-button {

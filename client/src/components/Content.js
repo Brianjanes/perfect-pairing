@@ -48,7 +48,6 @@ const Content = () => {
       .then((response) => {
         setResult(JSON.parse(response.data.choices[0].text));
         setIsLoading(false);
-        setInput("");
       })
       .catch((error) => {
         console.log(error);
@@ -92,34 +91,46 @@ const Content = () => {
   // };
 
   return (
-    <div className="content-main">
-      <h2>What would you like to pair wine with?</h2>
-      <form className="form">
-        <textarea
-          type="text"
-          placeholder="Describe your meal here"
-          className="query-input"
-          onChange={(e) => {
-            handleInputChange(e);
-          }}
-          value={input}
-        />
+    <div className="main">
+      <div className="descriptionDiv">
+        <p className="description">
+          Perfect Pairing is an AI powered solution to help you pick a great
+          wine.
+        </p>
+      </div>
+      <div className="content-main">
+        <h2>What's for dinner?</h2>
+        <form className="form">
+          <textarea
+            type="text"
+            placeholder="Describe your meal here"
+            className="query-input"
+            onChange={(e) => {
+              handleInputChange(e);
+            }}
+            value={input}
+          />
 
-        <button
-          className="button"
-          type="submit"
-          onClick={(e) => handleSubmit(e)}
-        >
-          Find Pairing
-        </button>
-      </form>
-      {showModal && (
-        <ResultsModal
-          setShowModal={setShowModal}
-          result={result}
-          isLoading={isLoading}
-        />
-      )}
+          <button
+            className="button"
+            type="submit"
+            onClick={(e) => handleSubmit(e)}
+          >
+            Find Pairing
+          </button>
+        </form>
+        {showModal && (
+          <ResultsModal
+            apiKey={apiKey}
+            input={input}
+            setInput={setInput}
+            setShowModal={setShowModal}
+            result={result}
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+          />
+        )}
+      </div>
     </div>
   );
 };
