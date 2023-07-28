@@ -99,7 +99,9 @@ const Content = () => {
         </p>
       </div>
       <div className="content-main">
-        <h2>What's for dinner?</h2>
+        <label htmlFor="food input" className="input-title">
+          What's for dinner?
+        </label>
         <form className="form">
           <textarea
             type="text"
@@ -116,7 +118,7 @@ const Content = () => {
             type="submit"
             onClick={(e) => handleSubmit(e)}
           >
-            Find Pairing
+            <label htmlFor="find pairing">Find Pairing</label>
           </button>
         </form>
         {showModal && (
