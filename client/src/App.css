@@ -61,8 +61,10 @@ h6 {
   isolation: isolate;
 }
 
+a {
+  text-decoration: none;
+}
 /* Written CSS start */
-
 .App {
   font-family: "Inter", sans-serif;
   width: 100vw;
